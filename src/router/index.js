@@ -56,7 +56,7 @@ export default new VueRouter({
     },
     {
       path:'/',
-      redirect:'/home'
+      redirect:'/shiwu'
     }
   ]
 })

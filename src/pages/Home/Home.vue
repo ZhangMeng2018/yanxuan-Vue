@@ -12,16 +12,9 @@
         <div class="navInner" ref="navInner">
           <ul class="navList">
             <li @click = 'sclectet("tuijian",$event)' class="first"><span :class="{active:isActive === 'tuijian'}">推荐</span></li>
-            <li @click = 'sclectet("jujia",$event)'><span :class="{active:isActive === 'jujia'}">居家</span></li>
-            <li  @click = 'sclectet("xiebao",$event)'><span :class="{active:isActive === 'xiebao'}">鞋包配饰</span></li>
-            <li @click = 'sclectet("fuzhuang",$event)'><span :class="{active:isActive === 'fuzhuang'}">服装</span></li>
-            <li @click = 'sclectet("dianqi",$event)'><span :class="{active:isActive === 'dianqi'}">电器</span></li>
-            <li @click = 'sclectet("xihu",$event)'><span :class="{active:isActive === 'xihu'}">洗护</span></li>
-            <li @click = 'sclectet("yinshi",$event)'><span :class="{active:isActive === 'yinshi'}">饮食</span></li>
-            <li @click = 'sclectet("canchu",$event)'><span :class="{active:isActive === 'canchu'}">餐厨</span></li>
-            <li @click = 'sclectet("yingtong",$event)'><span :class="{active:isActive === 'yingtong'}">婴童</span></li>
-            <li @click = 'sclectet("wenti",$event)'><span :class="{active:isActive === 'wenti'}">文体</span></li>
-            <li @click = 'sclectet("tese",$event)'><span :class="{active:isActive === 'tese'}">特色区</span></li>
+            <li @click = 'sclectet(banner.name,$event)' v-for="(banner,index) in home_data.headCateList" :key="index">
+              <span :class="{active:isActive === banner.name}">{{banner.name}}</span>
+            </li>
           </ul>
         </div>
       </div>
@@ -31,8 +24,8 @@
         <div class="swiper">
           <div class="swiper-container">
             <div class="swiper-wrapper">
-              <div class="swiper-slide" v-for="(index) in 5"  :key="index">
-                <img src="../../assets/images/lunbo/1.jpeg">
+              <div class="swiper-slide" v-for="(slideItem,index) in home_data.focusList"  :key="index">
+                <img :src="slideItem.picUrl">
               </div>
             </div>
             <div class="swiper-pagination"></div>
@@ -57,63 +50,25 @@
           </header>
           <div class="brand-goods">
             <ul>
-              <li class="goods left-goods">
+              <li class="goods" v-for="(tag,index) in tagData" :key="index" :class="{'left-goods':!(index%2)/2}">
                 <a>
                   <div class="content-goods">
-                    <h4></h4>
+                    <h4>{{tag.name}}</h4>
                     <div class="price">
-                      <span class="price1"></span>
-                      <span class="price2"></span>
+                      <span class="price1">{{tag.floorPrice}}</span>
+                      <span class="price2">元起</span>
                     </div>
-                    <i class="shangxin-icon"></i>
+                    <i class="shangxin-icon" v-show="tag.newOnShelf"></i>
                   </div>
-                  <img src="http://yanxuan.nosdn.127.net/8d670dfdf89315316160266b9a81f68a.png?imageView&thumbnail=355x0&quality=65">
-                </a>
-              </li>
-              <li class="goods">
-                <a>
-                  <div class="content-goods">
-                    <h4></h4>
-                    <div class="price">
-                      <span class="price1"></span>
-                      <span class="price2"></span>
-                    </div>
-                    <i class="shangxin-icon"></i>
-                  </div>
-                  <img src="http://yanxuan.nosdn.127.net/8d670dfdf89315316160266b9a81f68a.png?imageView&thumbnail=355x0&quality=65">
-                </a>
-              </li>
-              <li class="goods left-goods">
-                <a>
-                  <div class="content-goods">
-                    <h4></h4>
-                    <div class="price">
-                      <span class="price1"></span>
-                      <span class="price2"></span>
-                    </div>
-                    <i class="shangxin-icon"></i>
-                  </div>
-                  <img src="http://yanxuan.nosdn.127.net/8d670dfdf89315316160266b9a81f68a.png?imageView&thumbnail=355x0&quality=65">
-                </a>
-              </li>
-              <li class="goods">
-                <a>
-                  <div class="content-goods">
-                    <h4></h4>
-                    <div class="price">
-                      <span class="price1"></span>
-                      <span class="price2"></span>
-                    </div>
-                    <i class="shangxin-icon"></i>
-                  </div>
-                  <img src="http://yanxuan.nosdn.127.net/8d670dfdf89315316160266b9a81f68a.png?imageView&thumbnail=355x0&quality=65">
+                  <img :src="tag.picUrl">
                 </a>
               </li>
             </ul>
           </div>
         </div>
-        <Items v-for="index in 2" :key="index" :className = '"abc"+index'/>
-        <div class="limitTime">
+        <Items :className = '"newItemList"' :ItemList = 'home_data.newItemList' v-if="home_data.newItemList"/>
+        <Items :className = '"popularItemList"' :ItemList = 'home_data.popularItemList' v-if="home_data.popularItemList"/>
+        <div class="limitTime" v-if="home_data.flashSaleIndexVO">
           <a>
             <div class="limitTime-warp">
               <div class="left-item">
@@ -127,22 +82,22 @@
                 </div>
                 <div class="next-title">
                   <span>下一场</span>
-                  <span>14：00</span>
+                  <span >{{home_data.flashSaleIndexVO.nextStartTime | date-format("HH:mm")}}</span>
                   <span>开始</span>
                 </div>
               </div>
               <div class="right-item">
                 <div class="imgWarp">
-                  <img src="http://yanxuan.nosdn.127.net/36ebfc73b1f28d3c99981726788b8f84.png?imageView&quality=85&thumbnail=330x330" alt="">
+                  <img :src="home_data.flashSaleIndexVO.primaryPicUrl" alt="">
                 </div>
                 <div class="price">
                   <div class="nowPrice">
                     <span class="rmb">￥</span>
-                    <span>183</span>
+                    <span>{{home_data.flashSaleIndexVO.activityPrice}}</span>
                   </div>
                   <div class="originPrice">
                     <span class="rmb">￥</span>
-                    <span>229</span>
+                    <span>{{home_data.flashSaleIndexVO.originPrice}}</span>
                   </div>
                 </div>
               </div>
@@ -162,26 +117,24 @@
           </header>
           <div class="topic-items">
             <div class="topicScrollBox">
-              <ul>
-                <li v-for="index in 3" :key="index">
+              <ul v-if="home_data.topicList">
+                <li v-for="(topic,index) in home_data.topicList" :key="index">
                   <a href="javascript:;">
-                    <img src="https://yanxuan.nosdn.127.net/544235ba401c70389b9fadcd134bc1b9.jpg?imageView&thumbnail=575y322&enlarge=1&quality=75" alt="">
+                    <img :src="topic.scenePicUrl">
                   </a>
                   <div class="item-price">
-                    <h4>吃得到果肉的, 才是真凤梨酥</h4>
+                    <h4>{{topic.title}}</h4>
                     <span>
-                      38元起
+                      {{topic.priceInfo}}元起
                     </span>
                   </div>
-                  <div class="item-info">47%凤梨果肉</div>
+                  <div class="item-info">{{topic.subtitle}}</div>
                 </li>
               </ul>
             </div>
           </div>
         </div>
-        <CateListContainer/>
-        <CateListContainer/>
-        <CateListContainer/>
+          <CateListContainer v-for="(cate,index) in home_data.cateList" v-if="home_data.cateList" :cateData="cate" :key="index"/>
         <div class="downLoad-copyright">
           <div>
             <div class="downLoad">
@@ -248,13 +201,21 @@
     data() {
       return {
         isActive:'tuijian',
-        countdownTime:1000*60*60*2,
+        countdownTime:0,
         isShowGotoTop:0,
         isShowNews:true
       }
     },
     computed:{
       ...mapState(['home_data']),
+      tagData(){
+        if(this.home_data.tagList){
+          const tagData = this.home_data.tagList.splice(0,4);
+          return tagData
+        }else {
+          return
+        }
+      },
       hour(){
         const hour = Math.floor(this.countdownTime/(1000*60*60));
         return hour>10? hour : '0'+hour
@@ -275,6 +236,7 @@
       this.$store.dispatch('getHomeData',() =>{
         this.$nextTick(()=>{
           this._initScroll();
+          this.countdownTime = this.home_data.flashSaleIndexVO.remainTime;
           new Swiper('.swiper-container', {
             centeredSlides: true,
             autoplay: {
@@ -530,6 +492,7 @@
                       line-height: .45333rem;
                       margin-bottom: .08rem;
                     >.price
+                      display flex
                       >.price1
                         color: #333;
                         font-size: .37333rem;
@@ -538,17 +501,20 @@
                         color: #333;
                         font-size: .32rem;
                         line-height: .45333rem;
-
                     >.shangxin-icon
                       background-image: url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/new-5e42f2db1f.png);
                       height: .42667rem
                       width: .85333rem;
                       display: inline-block;
+                      margin-top -40px
                       vertical-align: middle;
                       background-repeat: no-repeat;
                       background-size: 100% 100%;
 
 
+                  >img
+                    width 100%
+                    height 100%
         .limitTime
           .limitTime-warp
             padding: .4rem .53333rem .4rem .74667rem;
@@ -687,6 +653,8 @@
                     overflow: hidden
                     >img
                       display block
+                      width 100%
+                      height 100%
                   >.item-price
                     height: .54667rem;
                     margin-bottom: .02667rem;

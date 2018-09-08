@@ -1,68 +1,30 @@
 <template>
   <div class="cateListContainer">
-    <h3 class="title">居家好物</h3>
+    <h3 class="title">{{cateData.name}}好物</h3>
     <div class="cateList">
       <ul>
-        <li>
+        <li v-for="(item,index) in itemList" :key="index">
           <a href="javascript:;">
             <div class="cate-header">
               <div class="img-warp">
-                <img src="http://yanxuan.nosdn.127.net/aa68d160af714a4df687227bbdf89768.png?imageView&quality=65&thumbnail=330x330" alt="">
+                <img :src="item.listPicUrl">
               </div>
-              <p class="cate-info">优质食材，薯类膨化多肉配方</p>
+              <p class="cate-info">{{item.simpleDesc}}</p>
             </div>
-            <div class="support">
-              <p>满减</p>
+            <div class="support" v-if="item.promTag">
+              <p>{{item.promTag}}</p>
             </div>
             <div class="cate-name">
-              <span>全期猫粮 1.8KG</span>
+              <span>{{item.name}}</span>
             </div>
             <div class="price">
-              <span>￥88</span>
+              <span>￥{{item.retailPrice}}</span>
             </div>
           </a>
         </li>
-        <li>
+        <li class="cate-more" :key='8'>
           <a href="javascript:;">
-            <div class="cate-header">
-              <div class="img-warp">
-                <img src="http://yanxuan.nosdn.127.net/aa68d160af714a4df687227bbdf89768.png?imageView&quality=65&thumbnail=330x330" alt="">
-              </div>
-              <p class="cate-info">优质食材，薯类膨化多肉配方</p>
-            </div>
-            <div class="support">
-              <p>满减</p>
-            </div>
-            <div class="cate-name">
-              <span>全期猫粮 1.8KG</span>
-            </div>
-            <div class="price">
-              <span>￥88</span>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="javascript:;">
-            <div class="cate-header">
-              <div class="img-warp">
-                <img src="http://yanxuan.nosdn.127.net/aa68d160af714a4df687227bbdf89768.png?imageView&quality=65&thumbnail=330x330" alt="">
-              </div>
-              <p class="cate-info">优质食材，薯类膨化多肉配方</p>
-            </div>
-            <div class="support">
-              <p>满减</p>
-            </div>
-            <div class="cate-name">
-              <span>全期猫粮 1.8KG</span>
-            </div>
-            <div class="price">
-              <span>￥88</span>
-            </div>
-          </a>
-        </li>
-        <li class="cate-more">
-          <a href="javascript:;">
-            <p>更多居家好物</p>
+            <p>更多{{cateData.name}}好物</p>
             <i class="right-icon"></i>
           </a>
         </li>
@@ -73,6 +35,14 @@
 
 <script>
   export default {
+    props:{
+      cateData:Object
+    },
+    computed:{
+      itemList(){
+        return this.cateData.itemList.splice(0,7)
+      }
+    },
     data() {
       return {}
     }
@@ -101,6 +71,7 @@
           float: left;
           position: relative;
           width: 50%;
+          height 552px
           overflow: hidden;
           background-color: #fff
           box-sizing border-box

@@ -1,8 +1,9 @@
 <template>
-  <div class="newItemWarp">
-    <header class="header">
-      <a>
-        <span>新品首发</span>
+  <div class="ItemWarp">
+    <header class="header" :class='className' >
+      <a :class="{haowu:className!=='newItemList'}">
+        <span v-if="className==='newItemList'">新品首发</span>
+        <span v-else="">人气推荐·好物精选</span>
         <div>
                 <span>
                   <span>查看全部</span>
@@ -11,22 +12,22 @@
         </div>
       </a>
     </header>
-    <div :class="className" class="newItemList">
+    <div :id ="className" class="ItemList">
       <ul>
-        <li v-for="index in 5" :key="index">
+        <li v-for="(item,index) in ItemList" :key="index">
           <a>
             <div class="img-warp">
-              <img src="http://yanxuan.nosdn.127.net/621362a91fcab80a55eb4685649ccb5f.png?imageView&quality=65&thumbnail=330x330">
+              <img :src="item.listPicUrl">
             </div>
             <div class="item-name">
                         <span>
-                          网易有道翻译王 2.0pro
+                          {{item.name}}
                         </span>
             </div>
             <div class="item-desc">
-              随身离线翻译神器 预售送100元礼品卡
+              {{item.simpleDesc}}
             </div>
-            <div class="item-price">￥1688</div>
+            <div class="item-price">￥{{item.retailPrice}}</div>
           </a>
         </li>
         <li class="item-more">
@@ -43,16 +44,15 @@
   import BScroll from 'better-scroll'
   export default {
     props:{
-      className:String
+      className:String,
+      ItemList:Array
     },
     data() {
       return {}
     },
     mounted(){
-      const newItemList =document.querySelector('.'+this.className);
-      console.log(this.className)
-      console.log(this)
-       new BScroll(newItemList,{
+      const BSbox =document.getElementById(this.className);
+       new BScroll(BSbox,{
         click: true,
         scrollX:true,
         scrollY:false
@@ -62,11 +62,10 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
-  .newItemWarp
+  .ItemWarp
     margin-bottom: .26667rem;
     background-color: #fff;
     >.header
-      background: url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/bitmap-d4f7b37e32.png);
       background-size: 10rem 3.46667rem;
       height: 3.46667rem;
       margin-bottom: .42667rem;
@@ -76,6 +75,10 @@
       align-items: center
       justify-content: center;
       font-size: .42667rem;
+      &.newItemList
+        background: url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/bitmap-d4f7b37e32.png)
+      &.popularItemList
+        background: url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/bitmap2-d626e0b52a.png)
       >a
         display: block;
         text-align: center;
@@ -100,8 +103,13 @@
             height: .29333rem;
             width: .13333rem;
             margin-left: .08rem;
-
-    >.newItemList
+        &.haowu
+          color: #B4A078;
+          >div
+            background-color  #F4E9CB
+            i
+              background url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/indexPopularArrow-fb701819de.png)
+    >.ItemList
       height: 6.4rem
       background-color: #fff;
       display flex
