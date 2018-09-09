@@ -101,3 +101,8 @@ body {
 .swiper-pagination-bullet-active.swiper-pagination-bullet{
   background: #02a774
 }
+
+div,ul,li{
+  box-sizing:border-box
+}
+

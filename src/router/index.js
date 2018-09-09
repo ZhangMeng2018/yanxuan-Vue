@@ -16,42 +16,47 @@ export default new VueRouter({
       path:'/home',
       component:Home,
       meta: {
-        showFooter: true  // 标识FooterGuide组件是否显示
+        ishowHeader:false,
+        ishowFooter: true  // 标识FooterGuide组件是否显示
       },
     },
     {
       path:'/shiwu',
       component:Shiwu,
       meta: {
-        showFooter: true  // 标识FooterGuide组件是否显示
+        ishowHeader:true,
+        ishowFooter: true  // 标识FooterGuide组件是否显示
       },
     },
     {
       path:'/category',
       component:Category,
       meta: {
-        showFooter: true  // 标识FooterGuide组件是否显示
+        ishowHeader:false,
+        ishowFooter: true  // 标识FooterGuide组件是否显示
       },
     },
     {
       path:'/shopcar',
       component:ShopCar,
       meta: {
-        showFooter: true  // 标识FooterGuide组件是否显示
+        ishowHeader:false,
+        ishowFooter: true  // 标识FooterGuide组件是否显示
       },
     },
     {
       path:'/personnelcenter',
       component:PersonnelCenter,
       meta: {
-        showFooter: true  // 标识FooterGuide组件是否显示
+        ishowHeader:true,
+        ishowFooter: false  // 标识FooterGuide组件是否显示
       },
     },
     {
       path:'/interlayer',
       component:Interlayer,
       meta: {
-        showFooter: false  // 标识FooterGuide组件是否显示
+        ishowFooter: false  // 标识FooterGuide组件是否显示
       },
     },
     {

@@ -30,12 +30,12 @@
             </div>
             <div class="swiper-pagination"></div>
           </div>
-          <div class="supports">
+          <div class="supports" v-if="home_data.policyDescList">
             <ul>
-              <li>
+              <li v-for="(support,index) in home_data.policyDescList" :key="index">
                 <a>
                   <i></i>
-                  <span></span>
+                  <span>{{support.desc}}</span>
                 </a>
               </li>
             </ul>
@@ -274,16 +274,16 @@
           scrollY:true,
           probeType: 1,
         });
+        this.topicScrollBox = new BScroll(topicScrollBox,{
+          click: true,
+          scrollX:true,
+          scrollY:false
+        });
         this.homeContinerBS.on('scroll',({y}) =>{
           this.isShowGotoTop = Math.abs(y) >500 ? 1 : 0
         });
         this.homeContinerBS.on('scrollEnd',({y}) =>{
           this.isShowGotoTop = Math.abs(y) >500 ? 1 : 0
-        });
-        this.topicScrollBox = new BScroll(topicScrollBox,{
-          click: true,
-          scrollX:true,
-          scrollY:false
         });
       }
     },
@@ -414,7 +414,6 @@
             >ul
               width 100%
               height: .96rem;
-              padding: 0 .4rem;
               display: -webkit-box;
               display: -webkit-flex;
               display: -moz-flex;
@@ -430,6 +429,34 @@
               -moz-align-items: center;
               align-items: center;
               zoom: 1;
+              >li
+                flex: 1;
+                float: left
+                display flex
+                align-items center
+                justify-content center
+                >a
+                  flex 1
+                  display: flex;
+                  justify-content center
+                  vertical-align: middle;
+                  height: .42667rem
+                  >i
+                    display: inline-block;
+                    vertical-align: middle;
+                    background-image: url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/servicePolicy-index-288c7abfd1.png);
+                    background-repeat: no-repeat;
+                    background-size: 100% 100%;
+                    width: .42667rem;
+                    height: .42667rem;
+                  >span
+                    font-size: .32rem;
+                    color: #333;
+                    margin-left: .10667rem;
+                    line-height: .42667rem;
+                    display: inline-block;
+                    vertical-align: middle;
+
 
 
         .brand

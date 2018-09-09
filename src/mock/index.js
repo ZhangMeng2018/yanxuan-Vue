@@ -8,5 +8,5 @@ import {categoryL1List} from './category_data.json'
 
 Mock.mock('/home_data',{code:0,data:home_data});
 Mock.mock('/shiwu_data',{code:0,data:shiwu_data});
-Mock.mock('/category',{code:0,data:category_data});
+Mock.mock('/category_data',{code:0,data:category_data});
 

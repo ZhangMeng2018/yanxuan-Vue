@@ -1,18 +1,21 @@
 <template>
   <div id="app">
+    <HeaderGuide v-show="$route.meta.ishowHeader"/>
     <div class="contentContiner">
       <router-view/>
     </div>
-    <FooterGuide v-show="$route.meta.showFooter"/>
+    <FooterGuide v-show="$route.meta.ishowFooter"/>
   </div>
 </template>
 
 <script>
 import FooterGuide from './components/FooterGuide/FooterGuide.vue'
+import HeaderGuide from './components/HeaderGuide/HeaderGuide.vue'
 
 export default {
   name: 'App',
   components: {
+    HeaderGuide,
     FooterGuide
   }
 }

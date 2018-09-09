@@ -50,7 +50,7 @@
 <style lang="stylus" rel="stylesheet/stylus" scoped>
   .footer-guide
     position relative
-    z-index 1
+    z-index 10
     width 100%
     height 1.30667rem
     margin-top -1.30667rem
