@@ -105,4 +105,7 @@ body {
 div,ul,li{
   box-sizing:border-box
 }
-
+input{
+  outline: none;
+  box-sizing: border-box;
+}

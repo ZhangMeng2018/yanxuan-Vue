@@ -1,10 +1,10 @@
 <template>
   <a class="surprise" v-if="surpise.picList">
     <div class="imgWarp">
-      <div class="left-img" :style="{background:`url(${surpise.picList[0]})`}"></div>
+      <div class="left-img" :style="{backgroundImage:`url(${surpise.picList[0]})`}"></div>
       <div class="right-img">
-        <div class="up" :style="{background:`url(${surpise.picList[1]})`}"></div>
-        <div class="down" :style="{background:`url(${surpise.picList[2]})`}"></div>
+        <div class="up" :style="{backgroundImage:`url(${surpise.picList[1]})`}"></div>
+        <div class="down" :style="{backgroundImage:`url(${surpise.picList[2]})`}"></div>
       </div>
     </div>
     <div class="desc">{{surpise.content}}</div>
@@ -44,16 +44,18 @@
         float: right;
         width: 2.37333rem
         >.up
-          background-size: cover;
+          width: 2.37333rem
+          height: 2.37333rem;
+          background-size 100% 100%
           background-position: center;
           background-repeat: no-repeat
           margin-bottom: .05333rem
-          height: 2.37333rem;
         >.down
+          width: 2.37333rem
+          height: 2.37333rem
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat
-          height: 2.37333rem
     >.desc
       background-color: #fff;
       font-size: .37333rem;

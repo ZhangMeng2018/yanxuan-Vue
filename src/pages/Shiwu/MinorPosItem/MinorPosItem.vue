@@ -14,7 +14,7 @@
         {{minorData.subTitle}}
       </div>
     </div>
-    <div class="minorPic" :style="{background:`url(${minorData.picUrl})`}">
+    <div class="minorPic" :style="{backgroundImage:`url(${minorData.picUrl})`}">
       <div class="topicTag">
         <div class="tag">{{minorData.typeName}}</div>
       </div>

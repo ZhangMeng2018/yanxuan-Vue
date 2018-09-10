@@ -1,6 +1,6 @@
 <template>
   <a class="mainPosItem" href="javascript:;" v-if="mainData">
-    <div class="imgContiner" :style="{background:`url(${mainData.picUrl})`}">
+    <div class="imgContiner" :style="{backgroundImage:`url(${mainData.picUrl})`}">
       <div class="topicTag">
         <div class="tag">{{mainData.typeName}}</div>
       </div>

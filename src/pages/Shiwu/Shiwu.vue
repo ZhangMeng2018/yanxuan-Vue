@@ -141,10 +141,10 @@
             centeredSlides: true,
             slidesPerView: 'auto',
             spaceBetween: -5,
-//        autoplay: {
-//          delay: 2500,
-//          disableOnInteraction: false,
-//        },
+            autoplay: {
+              delay: 2500,
+              disableOnInteraction: false,
+            },
             loop:true
           });
           this._initScroll()
@@ -196,7 +196,6 @@
       moreSurprise(){
         this.$nextTick(()=>{
           this.isOverLoad = true;
-          console.log(this.isOverLoad)
           this.shiwuContinerBS.refresh()
         })
       }
