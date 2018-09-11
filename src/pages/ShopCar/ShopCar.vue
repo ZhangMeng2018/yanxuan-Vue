@@ -45,6 +45,7 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
+  @import "../../common/stylus/mixins.styl"
   .shopcar
     width 100%
     height 100%
@@ -62,7 +63,7 @@
         display: inline-block;
         font-size: .48rem
         vertical-align middle
-        margin-top -20px
+        margin-top -20*$rpx
       >.right
         position: absolute;
         top: 0;
@@ -96,7 +97,7 @@
             height: .13333rem
             margin-right: .08rem;
             position: relative;
-            top: -1px
+            top: -1*$rpx
 
 
     >.defaultPag

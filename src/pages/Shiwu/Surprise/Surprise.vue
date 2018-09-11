@@ -1,13 +1,14 @@
 <template>
-  <a class="surprise" v-if="surpise.picList">
+  <a class="surprise">
     <div class="imgWarp">
-      <div class="left-img" :style="{backgroundImage:`url(${surpise.picList[0]})`}"></div>
-      <div class="right-img">
+      <div class="left-img" :style="{backgroundImage:`url(${surpise.picList[0]})`}"  v-if="surpise.picList"></div>
+      <div class="right-img" v-if="surpise.picList">
         <div class="up" :style="{backgroundImage:`url(${surpise.picList[1]})`}"></div>
         <div class="down" :style="{backgroundImage:`url(${surpise.picList[2]})`}"></div>
       </div>
+      <div class="one-img" :style="{backgroundImage:`url(${surpise.itemPicUrl})`}" v-else></div>
     </div>
-    <div class="desc">{{surpise.content}}</div>
+    <div class="desc">{{surpise.content? surpise.content:surpise.title}}</div>
   </a>
 </template>
 
@@ -23,6 +24,7 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
+  @import "../../../common/stylus/mixins.styl"
   .surprise
     display: block;
     padding: .32rem;
@@ -56,6 +58,13 @@
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat
+      >.one-img
+        width 642*$rpx
+        height 360*$rpx
+        display block
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat
     >.desc
       background-color: #fff;
       font-size: .37333rem;

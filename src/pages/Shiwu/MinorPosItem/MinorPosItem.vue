@@ -34,6 +34,7 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
+  @import "../../../common/stylus/mixins.styl"
   .minorPosItem
     display: flex;
     background-color: #fff;
@@ -85,8 +86,8 @@
         margin-bottom: .18667rem;
         line-height: 1.2
       .line2
-        width 358px
-        height 67px
+        width 358*$rpx
+        height 67*$rpx
         position: relative;
         font-size: .32rem;
         line-height: 1.5;
@@ -113,6 +114,6 @@
           border: 1px solid #d9d9d9;
           border-radius: .26667rem;
           color: #333
-          font-size: 24px
+          font-size: 24*$rpx
 
 </style>

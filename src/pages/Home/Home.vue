@@ -198,6 +198,28 @@
   import Items from './Items/Items.vue'
   import CateListContainer from './CateListContainer/CateListContainer.vue'
   export default {
+    mounted(){
+      const timer = setInterval(()=>{
+        this.countdownTime -= 100
+      },100);
+      this.$store.dispatch('getHomeData',() =>{
+        this.$nextTick(()=>{
+          this._initScroll();
+          this.countdownTime = this.home_data.flashSaleIndexVO.remainTime;
+          new Swiper('.swiper-container', {
+            centeredSlides: true,
+            autoplay: {
+              delay: 2500,
+              disableOnInteraction: false,
+            },
+            pagination: {
+              el: '.swiper-pagination'
+            },
+            loop:true
+          });
+        });
+      });
+    },
     data() {
       return {
         isActive:'tuijian',
@@ -229,28 +251,6 @@
         return secs>10? secs : '0'+secs
       }
     },
-    mounted(){
-      const timer = setInterval(()=>{
-        this.countdownTime -= 100
-      },100);
-      this.$store.dispatch('getHomeData',() =>{
-        this.$nextTick(()=>{
-          this._initScroll();
-          this.countdownTime = this.home_data.flashSaleIndexVO.remainTime;
-          new Swiper('.swiper-container', {
-            centeredSlides: true,
-            autoplay: {
-              delay: 2500,
-              disableOnInteraction: false,
-            },
-            pagination: {
-              el: '.swiper-pagination'
-            },
-            loop:true
-          });
-        });
-      });
-    },
     methods:{
       sclectet(li,event){
         this.isActive = li;
@@ -273,6 +273,7 @@
           scrollX:false,
           scrollY:true,
           probeType: 1,
+          scrollbar:true
         });
         this.topicScrollBox = new BScroll(topicScrollBox,{
           click: true,
@@ -295,6 +296,7 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
+  @import "../../common/stylus/mixins.styl"
   .homeContiner
     width 100%
     height 100%
@@ -303,7 +305,7 @@
       top 0
       left 0
       width 100%
-      height 148px
+      height 148*$rpx
       background-color #fff
       display flex
       flex-direction column
@@ -351,6 +353,7 @@
           width 100%
           display: flex;
           >.navList
+            height: .8rem;
             display: flex;
             flex-shrink: 0;
             padding: 0 .4rem;
@@ -383,7 +386,7 @@
       >.section
         width 100%
         overflow hidden
-        padding-top 148px
+        padding-top 148*$rpx
         .swiper
           width 100%
           overflow hidden
@@ -533,7 +536,7 @@
                       height: .42667rem
                       width: .85333rem;
                       display: inline-block;
-                      margin-top -40px
+                      margin-top -40*$rpx
                       vertical-align: middle;
                       background-repeat: no-repeat;
                       background-size: 100% 100%;
@@ -618,7 +621,7 @@
                   height: .37333rem;
                   >.rmb
                     font-size .32rem
-                    margin-right -5px
+                    margin-right -5*$rpx
 
         .fuli
           width: 10rem;
@@ -654,7 +657,7 @@
 
           >.topic-items
             width 100%
-            height 453px
+            height 453*$rpx
             box-sizing border-box
             padding: 0 .4rem .48rem;
             overflow: hidden
@@ -670,13 +673,12 @@
                   display flex
                   flex-flow: row nowrap
                   flex-direction column
-                  margin-right: 20.8444px;
+                  margin-right: 20.8444*$rpx;
                   >a
                     display: block;
                     width: 7.66667rem;
-                    height: 4.29333rem;
                     margin-bottom: .21333rem;
-                    border-radius: 8px;
+                    border-radius: 8*$rpx;
                     overflow: hidden
                     >img
                       display block
@@ -705,7 +707,7 @@
                     font-size: .32rem;
                     color: #7F7F7F;
         .downLoad-copyright
-          border-top: 1px solid rgba(0,0,0,.15);
+          border-top: 1*$rpx solid rgba(0,0,0,.15);
           background-color: #414141
           >div
             text-align: center;
@@ -729,10 +731,10 @@
                 margin-left: .33333rem
                 height: .82667rem;
                 line-height: .82667rem
-                border: 1px solid #999
+                border: 1*$rpx solid #999
                 text-align: center;
                 background-color: transparent;
-                border-radius: 4px;
+                border-radius: 4*$rpx;
                 overflow: hidden;
 
             >.copyright
@@ -846,12 +848,12 @@
               >.manu
                 margin-top: .2rem;
                 >span
-                  border: 1px solid #7f7f7f;
+                  border: 1*$rpx solid #7f7f7f;
                   border-radius: .05333rem;
                   padding: 0 .10667rem;
                   height: .48rem;
                   line-height: .48rem;
-                  font-size: 24px
+                  font-size: 24*$rpx
               >.price
                 margin-top: .26667rem;
                 font-size: .37333rem;
@@ -876,7 +878,7 @@
             line-height: 1.17333rem;
           >.checkMore
             height: 1.17333rem;
-            border: 1px solid #7F7F7F;
+            border: 1*$rpx solid #7F7F7F;
             border-radius: .05333rem;
             text-align: center;
             line-height: 1.17333rem;

@@ -22,7 +22,7 @@
         <div class="cateContiner">
           <div class="catetScroll">
             <div class="cates">
-              <div class="banner" :style="{background: `url(${showcategory.bannerUrl})`}"></div>
+              <div class="banner" :style="{backgroundImage: `url(${showcategory.bannerUrl})`}"></div>
               <div class="cateList" v-if="category_data.length">
                 <SpecialItem v-if="!showcategory.level" :showcategory = 'showcategory'/>
                 <CategoryItem v-else :showcategory = 'showcategory'/>
@@ -40,6 +40,14 @@
   import CategoryItem from './CategoryItem/CategoryItem.vue'
   import SpecialItem from './SpecialItem/SpecialItem.vue'
   export default {
+    mounted(){
+      this.$store.dispatch('getCategoryData',()=>{
+        this.$nextTick(()=>{
+          this._initScroll();
+          this.showcategory = this.category_data[0]
+        })
+      })
+    },
     data() {
       return {
         isActive:0,
@@ -62,22 +70,16 @@
           scrollX:false,
           scrollY:true,
           probeType: 1,
+          scrollbar:true
         });
         this.catetScroll = new BScroll(catetScroll,{
           click: true,
           scrollX:false,
           scrollY:true,
           probeType: 1,
+          scrollbar:true
         });
       }
-    },
-    mounted(){
-      this.$store.dispatch('getCategoryData',()=>{
-        this.$nextTick(()=>{
-          this._initScroll();
-          this.showcategory = this.category_data[0]
-        })
-      })
     },
     components:{
       CategoryItem,
@@ -87,12 +89,13 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
+  @import "../../common/stylus/mixins.styl"
 .category
   width 100%
   height 100%
   >.header
     width 100%
-    height: 88px
+    height: 88*$rpx
     position fixed
     top 0
     left 0
@@ -103,7 +106,7 @@
       background-color: #d9d9d9;
       left: 0;
       width: 100%;
-      height: 1px;
+      height: 1*$rpx;
       -webkit-transform-origin: 50% 100% 0;
       transform-origin: 50% 100% 0;
       bottom: 0
@@ -138,12 +141,12 @@
     position relative
     width 100%
     height 100%
-    padding-top 88px
+    padding-top 88*$rpx
     box-sizing border-box
     background-color: #fff
     >.navContiner
       position: absolute;
-      top: 88px
+      top: 88*$rpx
       left: 0;
       bottom: 0;
       z-index: 1;
@@ -154,7 +157,7 @@
         background-color: rgba(0,0,0,.15);
         top: 0;
         bottom: 0;
-        width: 1px;
+        width: 1*$rpx;
         -webkit-transform-origin: 100% 50% 0;
         transform-origin: 100% 50% 0;
         right: 0
@@ -208,5 +211,5 @@
             margin-bottom: .42667rem;
             background: center no-repeat #f4f4f4;
             background-size: cover;
-            border-radius: 4px
+            border-radius: 4*$rpx
 </style>

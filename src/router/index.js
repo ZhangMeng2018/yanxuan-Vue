@@ -16,7 +16,7 @@ export default new VueRouter({
       path:'/home',
       component:Home,
       meta: {
-        ishowHeader:false,
+        ishowHeader:false,// 标识HeaderGuide组件是否显示
         ishowFooter: true  // 标识FooterGuide组件是否显示
       },
     },
@@ -24,7 +24,7 @@ export default new VueRouter({
       path:'/shiwu',
       component:Shiwu,
       meta: {
-        ishowHeader:true,
+        ishowHeader:true,// 标识HeaderGuide组件是否显示
         ishowFooter: true  // 标识FooterGuide组件是否显示
       },
     },
@@ -32,7 +32,7 @@ export default new VueRouter({
       path:'/category',
       component:Category,
       meta: {
-        ishowHeader:false,
+        ishowHeader:false,// 标识HeaderGuide组件是否显示
         ishowFooter: true  // 标识FooterGuide组件是否显示
       },
     },
@@ -40,7 +40,7 @@ export default new VueRouter({
       path:'/shopcar',
       component:ShopCar,
       meta: {
-        ishowHeader:false,
+        ishowHeader:false,// 标识HeaderGuide组件是否显示
         ishowFooter: true  // 标识FooterGuide组件是否显示
       },
     },
@@ -48,7 +48,7 @@ export default new VueRouter({
       path:'/personnelcenter',
       component:PersonnelCenter,
       meta: {
-        ishowHeader:true,
+        ishowHeader:true,// 标识HeaderGuide组件是否显示
         ishowFooter: false  // 标识FooterGuide组件是否显示
       },
     },
@@ -61,7 +61,7 @@ export default new VueRouter({
     },
     {
       path:'/',
-      redirect:'/shiwu'
+      redirect:'/home'
     }
   ]
 })

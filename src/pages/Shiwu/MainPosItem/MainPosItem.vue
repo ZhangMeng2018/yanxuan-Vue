@@ -29,6 +29,7 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
+  @import "../../../common/stylus/mixins.styl"
   .mainPosItem
     display: block;
     position: relative;
@@ -59,7 +60,7 @@
         border: 1px solid #d9d9d9;
         border-radius: .26667rem;
         color: #333;
-        font-size: 24px
+        font-size: 24*$rpx
     .topicInfo
       overflow: hidden;
       position: relative;

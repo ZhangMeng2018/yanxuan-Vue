@@ -43,21 +43,22 @@
 <script>
   import BScroll from 'better-scroll'
   export default {
+    mounted(){
+      const BSbox =document.getElementById(this.className);
+      new BScroll(BSbox,{
+        click: true,
+        scrollX:true,
+        scrollY:false
+      });
+    },
     props:{
       className:String,
       ItemList:Array
     },
     data() {
       return {}
-    },
-    mounted(){
-      const BSbox =document.getElementById(this.className);
-       new BScroll(BSbox,{
-        click: true,
-        scrollX:true,
-        scrollY:false
-      });
     }
+
   }
 </script>
 

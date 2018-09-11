@@ -38,18 +38,19 @@
     props:{
       cateData:Object
     },
+    data() {
+      return {}
+    },
     computed:{
       itemList(){
         return this.cateData.itemList.splice(0,7)
       }
-    },
-    data() {
-      return {}
     }
   }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
+  @import "../../../common/stylus/mixins.styl"
   .cateListContainer
     margin-bottom: .26667rem;
     background-color: #f4f4f4
@@ -71,7 +72,7 @@
           float: left;
           position: relative;
           width: 50%;
-          height 552px
+          height 552*$rpx
           overflow: hidden;
           background-color: #fff
           box-sizing border-box

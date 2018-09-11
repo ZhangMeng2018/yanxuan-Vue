@@ -24,7 +24,6 @@ export default {
   },
   async getCategoryData({commit},cb){
     const result = await reqCategoryData();
-    console.log(result)
     if(result.code===0){
       const category_data = result.data;
       commit(GETCATEGORYDATA,{category_data});

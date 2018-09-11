@@ -115,6 +115,23 @@
   import MinorPosItem from './MinorPosItem/MinorPosItem.vue'
   import Surprise from './Surprise/Surprise.vue'
   export default {
+    mounted(){
+      this.$store.dispatch('getShiwuData',()=>{
+        this.$nextTick(()=>{
+          new Swiper('.swiper-container',{
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            spaceBetween: -5,
+            autoplay: {
+              delay: 2500,
+              disableOnInteraction: false,
+            },
+            loop:true
+          });
+          this._initScroll()
+        })
+      });
+    },
     data() {
       return {
         isShowGotoTop:0,
@@ -133,23 +150,6 @@
         }
         return this.shiwu_data.findMore.slice(0,this.showSurprise)
       }
-    },
-    mounted(){
-      this.$store.dispatch('getShiwuData',()=>{
-        this.$nextTick(()=>{
-          new Swiper('.swiper-container',{
-            centeredSlides: true,
-            slidesPerView: 'auto',
-            spaceBetween: -5,
-            autoplay: {
-              delay: 2500,
-              disableOnInteraction: false,
-            },
-            loop:true
-          });
-          this._initScroll()
-        })
-      });
     },
     methods:{
       gotoTop(){
@@ -187,11 +187,6 @@
         });
       }
     },
-    components:{
-      MainPosItem,
-      MinorPosItem,
-      Surprise
-    },
     watch:{
       moreSurprise(){
         this.$nextTick(()=>{
@@ -199,12 +194,18 @@
           this.shiwuContinerBS.refresh()
         })
       }
+    },
+    components:{
+      MainPosItem,
+      MinorPosItem,
+      Surprise
     }
+
   }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
-
+  @import "../../common/stylus/mixins.styl"
   .commonTitle
     background-color: #fff;
     text-align: center;
@@ -220,7 +221,7 @@
       content: ' ';
       display: block;
       width: 3.52rem;
-      height: 1px;
+      height: 1*$rpx;
       background-color: #d9d9d9
     >div
       margin: 0 .32rem;
@@ -247,7 +248,7 @@
               >.swiper-slide
                 position: relative;
                 display: block;
-                width: 690px
+                width: 690*$rpx
                 padding: 0 .13333rem;
                 >img
                   width 100%
@@ -350,7 +351,7 @@
                     height: .42667rem;
                     line-height: .42667rem;
                     text-align: right
-                    font-size 24px
+                    font-size 24*$rpx
                 >.title
                   color: #333;
                   font-size: .32rem;
@@ -451,7 +452,7 @@
                   &.more
                     position: relative;
                     height: 5.12rem;
-                    border: 10px solid #e6e6e6;
+                    border: 10*$rpx solid #e6e6e6;
                     padding: 0;
                     margin-right: 0;
                     background-color: #fafafa
@@ -501,7 +502,7 @@
               display flex
               line-height 100%
               >.nickname
-                padding-top 10px
+                padding-top 10*$rpx
 
             >.desc
               font-size: .37333rem;
