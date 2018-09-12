@@ -781,10 +781,10 @@
         position: fixed;
         right: .4rem;
         top: .8rem;
-        z-index: 2;
+        z-index: 100;
         display: inline-block;
         vertical-align: middle;
-        background-image: url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/modalClose-9365f12572.png);
+        background-image: url('../../assets/images/icon/close-icon.png');
         background-repeat: no-repeat;
         background-size: 100% 100%;
         width: .85333rem;

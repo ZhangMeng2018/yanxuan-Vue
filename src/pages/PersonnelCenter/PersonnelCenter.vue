@@ -3,7 +3,7 @@
     <div class="loginTypesWrap" v-show="!showPage">
       <div class="typesWarp">
         <div class="logoWarp">
-          <img src="//yanxuan.nosdn.127.net/bd139d2c42205f749cd4ab78fa3d6c60.png">
+          <img src="../../assets/images/logo/logo1.png">
         </div>
         <div class="btnWarp">
           <div class="loginPhone-button redBtn" @click="switchPage('phone')">
@@ -44,7 +44,7 @@
     <div class="loginTypes" v-show="showPage">
       <div class="phoneLogin fromContiner" v-show="showPage === 'phone'">
         <div class="logo">
-          <img src="//yanxuan.nosdn.127.net/bd139d2c42205f749cd4ab78fa3d6c60.png">
+          <img src="../../assets/images/logo/logo1.png">
         </div>
         <div class="userForm">
           <div class="inputWarp" :class='{inputRight:isRightPhone}'>
@@ -59,7 +59,7 @@
             <span class="forgetPassword small">
               忘记密码？
             </span>
-            <span class="useSMS" @click="ifSendSMS = !ifSendSMS">
+            <span class="useSMS" @click="toggolePhoneLogin">
               使用{{ifSendSMS?'密码':'短信'}}验证登录
             </span>
           </div>
@@ -75,7 +75,7 @@
       </div>
       <div class="mailLogin fromContiner" v-show="showPage === 'mail'">
         <div class="logo">
-          <img src="//yanxuan.nosdn.127.net/bd139d2c42205f749cd4ab78fa3d6c60.png">
+          <img src="../../assets/images/logo/logo1.png">
         </div>
         <div class="userForm">
           <div class="inputWarp" :class='{inputRight:isRightMail}'>
@@ -145,7 +145,11 @@
       switchPage(page){
         this.password = '';
         this.showPage = page
-      }
+      },
+      toggolePhoneLogin(){
+        this.password = this.smsNumber = '';
+        this.ifSendSMS = !this.ifSendSMS
+      },
     }
   }
 </script>
@@ -217,7 +221,7 @@
             >.icon-loginPhone
               display: inline-block;
               vertical-align: middle;
-              background-image: url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/login-s2d0d826858-b284a621da.png);
+              background-image: url('../../assets/images/icon/sprites-icon-.png');
               background-repeat: no-repeat;
               background-size: .53333rem 3.86667rem;
               background-position: 0 -.66667rem
@@ -233,7 +237,7 @@
               margin-right: .21333rem;
               position: relative;
               top: -.02667rem
-              background-image: url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/login-s2d0d826858-b284a621da.png);
+              background-image: url('../../assets/images/icon/sprites-icon-.png');
               background-repeat: no-repeat;
               background-size: .53333rem 3.86667rem;
               width: .53333rem;
@@ -247,7 +251,7 @@
             >.icon-arrow-right
               display: inline-block;
               vertical-align: middle;
-              background-image: url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/arrow-right3-c1ab37e88b.png);
+              background-image: url('../../assets/images/icon/arrow-right.png');
               background-repeat: no-repeat;
               background-size: 100% 100%;
               width: .37333rem;

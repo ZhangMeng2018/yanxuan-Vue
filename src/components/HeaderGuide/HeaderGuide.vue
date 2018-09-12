@@ -58,7 +58,7 @@
         display: inline-block;
         vertical-align: middle;
         transform translateY(50%)
-        background-image: url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/hd-s28ce1ea0be-3d137edb2d.png);
+        background-image: url('../../assets/images/nav/header-nav.png');
         background-repeat: no-repeat;
         background-size: 2.29333rem 4.96rem
       .logo-icon
@@ -67,7 +67,7 @@
         background-position: 0 -1.70667rem;
         display: inline-block;
         vertical-align: middle;
-        background-image: url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/hd-s28ce1ea0be-3d137edb2d.png);
+        background-image: url('../../assets/images/nav/header-nav.png');
         background-repeat: no-repeat;
         background-size: 2.29333rem 4.96rem
       >rightWarp
@@ -81,7 +81,7 @@
           background-position: 0 -4.10667rem
           display: inline-block;
           vertical-align: middle;
-          background-image: url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/hd-s28ce1ea0be-3d137edb2d.png);
+          background-image: url('../../assets/images/nav/header-nav.png');
           background-repeat: no-repeat;
           background-size: 2.29333rem 4.96rem
       .shop-icon
@@ -90,7 +90,7 @@
         background-position: 0 0
         display: inline-block;
         vertical-align: middle;
-        background-image: url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/hd-s28ce1ea0be-3d137edb2d.png);
+        background-image: url('../../assets/images/nav/header-nav.png');
         background-repeat: no-repeat;
         background-size: 2.29333rem 4.96rem
 </style>

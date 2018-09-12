@@ -91,7 +91,7 @@
           >.service-icon
             display: inline-block;
             vertical-align: middle;
-            background-image: url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/servicePolicy-1d7541974f.png);
+            background-image: url('../../assets/images/icon/yuandian.png');
             background-repeat: no-repeat;
             width: .13333rem;
             height: .13333rem
@@ -126,7 +126,7 @@
           background-size: 3.30667rem 3.30667rem;
           background-position: center center;
           background-repeat: no-repeat
-          background-image: url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/noCart-a8fe3f12e5.png);
+          background-image: url('../../assets/images/backgroundImage/shopcar.png');
 
         >.txt
           font-size: .37333rem;

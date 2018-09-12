@@ -20,7 +20,7 @@
           <div id="article-scroll">
             <ul class="article-list">
               <li v-for="(column,index) in shiwu_data.column" v-if="shiwu_data.column" :key="index">
-                <div class="img-container" :style="{background: `url(${column.picUrl})`}"></div>
+                <div class="img-container" :style="{backgroundImage: `url(${column.picUrl})`}"></div>
                 <div class="article-count">
                   <div>{{column.articleCount}}</div>
                 </div>
@@ -78,7 +78,7 @@
         <div class="exploreLook">
           <div class="commonTitle">严选LOOK</div>
           <div class="imgWarp">
-            <img src="//yanxuan.nosdn.127.net/ce03b9c9d8636b04564a6e36d5be0781.jpg?imageView&quality=75" alt="">
+            <img src="../../assets/images/backgroundImage/yanxuanLOOK.jpg" alt="">
           </div>
           <div class="topicInfo">
             <div class="author">
@@ -332,7 +332,7 @@
                   height: 2.18667rem;
                   margin-bottom: .29333rem;
                   border-radius: .05333rem
-                  background-size: cover;
+                  background-size: 100% 100%;
                   background-position: center;
                   background-repeat: no-repeat
                 >.article-count
@@ -393,7 +393,7 @@
                   vertical-align: middle;
                   &.main
                     position relative
-                    background-image: url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/tenFifteen-2a1d0ea11b.png);
+                    background-image: url('../../assets/images/backgroundImage/shidian.png');
                     background-repeat: no-repeat;
                     background-size: 100% 100%
                     >.line-title

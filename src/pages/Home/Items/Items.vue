@@ -77,9 +77,9 @@
       justify-content: center;
       font-size: .42667rem;
       &.newItemList
-        background: url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/bitmap-d4f7b37e32.png)
+        background: url('../../../assets/images/backgroundImage/xinpin.png')
       &.popularItemList
-        background: url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/bitmap2-d626e0b52a.png)
+        background: url('../../../assets/images/backgroundImage/renqi.png')
       >a
         display: block;
         text-align: center;
